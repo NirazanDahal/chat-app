@@ -50,20 +50,30 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("Login"),
-      ),
+      backgroundColor: Colors.lightBlue,
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: const Text("Login"),
+      // ),
       body: Form(
         key: _loginFormKey,
         child: Column(
           children: [
+            const SizedBox(
+              height: 300,
+            ),
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.only(left: 15, right: 15),
               child: TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 controller: _emailController,
-                decoration: const InputDecoration(labelText: "Email"),
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25)),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.all(10),
+                    hintText: "Email"),
                 validator: (value) {
                   if (value != null &&
                       RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -75,13 +85,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
               ),
             ),
+            const SizedBox(
+              height: 10,
+            ),
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.only(left: 15, right: 15),
               child: TextFormField(
                 keyboardType: TextInputType.number,
                 obscureText: _isObscure,
                 decoration: InputDecoration(
-                    labelText: "Password",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25)),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.all(10),
+                    hintText: "Password",
                     suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
@@ -99,7 +117,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
               ),
             ),
-            ElevatedButton(
+            MaterialButton(
+              color: const Color.fromARGB(255, 223, 146, 123),
               onPressed: () {
                 if (_loginFormKey.currentState!.validate()) {
                   _loginUser(_emailController.text, _passwordController.text);
@@ -119,6 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
               },
               child: const Text(
                 "Don't have an account? Sign up.",
+                style: TextStyle(color: Color.fromARGB(255, 218, 205, 205)),
               ),
             ),
           ],
