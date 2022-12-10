@@ -1,7 +1,6 @@
 import 'package:chat_app/auth/login_screen.dart';
 import 'package:chat_app/chat/chat_detail.dart';
 import 'package:chat_app/main.dart';
-import 'package:chat_app/profile/edit_profile.dart';
 import 'package:chat_app/profile/profile_screen.dart';
 import 'package:chat_app/utils/app_functions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -23,7 +22,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 12, 12, 12),
+      backgroundColor: const Color.fromARGB(255, 19, 18, 18),
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text("Chats"),
@@ -93,6 +92,16 @@ class _ChatScreenState extends State<ChatScreen> {
                           users[index]['name'],
                           style: const TextStyle(
                               color: Color.fromARGB(255, 193, 183, 183)),
+                        ),
+                        tileColor: Colors.blue,
+                        contentPadding: const EdgeInsets.all(5),
+                        leading: ClipOval(
+                          child: Image.network(
+                            "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
+                            fit: BoxFit.cover,
+                            height: 40,
+                            width: 40,
+                          ),
                         ),
                       );
                     },
